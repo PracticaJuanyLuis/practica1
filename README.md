@@ -1,111 +1,65 @@
-# Proyecto de Machine Learning — Práctica 1
+# Proyecto de Predicción — Advertising Dataset
 
  
 
-Este repositorio forma parte de la Práctica 1 de la asignatura Herramientas de Trabajo Colaborativo.
+## Introducción
+
+Este proyecto forma parte de la **Práctica 2** de la asignatura **Herramientas de Trabajo Colaborativo**.
+
+El objetivo es documentar el flujo de trabajo del proyecto, preparar un sistema de pre-commit funcional
+
+y generar una documentación interactiva utilizando **Jupyter Book**.
 
  
 
-## Contenido del repositorio
+## Problema a resolver
+
+El objetivo es predecir la variable **Sales** en función de la inversión publicitaria en distintos medios:
+
+**TV**, **Radio** y **Newspaper**.
 
  
 
-- `src/training.py`: Script que entrena un modelo Random Forest usando el dataset Advertising (Kaggle).
+## Descripción del dataset
 
-- `src/prediction.py`: Script que genera predicciones usando el modelo entrenado.
-
-- `data/dataset.csv`: Dataset consumidor natural de la práctica (Advertising).
-
-- `tests/test_training.py`: Test básico que verifica la estructura del dataset.
-
-- Estructura de carpetas siguiendo buenas prácticas de MLOps.
-
-- Uso de ramas, Pull Requests y protecciones de main.
+Dataset original de Kaggle: **Advertising Dataset**.
 
  
 
-## Integrantes del equipo
+| Columna     | Descripción |
+
+|-------------|-------------|
+
+| TV          | Inversión en televisión |
+
+| Radio       | Inversión en radio |
+
+| Newspaper   | Inversión en prensa escrita |
+
+| Sales       | Ventas (variable objetivo) |
 
  
 
-- Luis 
+- ~200 muestras 
 
-- Juan 
+- Sin valores nulos 
 
- 
-
-## Dataset utilizado
+- Problema de regresión 
 
  
 
-**Advertising dataset (Kaggle)** 
-
-Columnas:
-
-- TV 
-
-- Radio 
-
-- Newspaper 
-
-- Sales (variable objetivo)
+## Pipeline del proyecto
 
  
 
-El objetivo es predecir las ventas a partir del gasto en publicidad.
+```mermaid
 
- 
+flowchart TD
 
-## Tecnología utilizada
+    A[dataset.csv] --> B[training.py]
 
- 
+    B --> C[model.pkl]
 
-- Python 
+    C --> D[prediction.py]
 
-- Scikit-learn 
-
-- VS Code 
-
-- Git y GitHub 
-
-- PyTest 
-
-- Project Boards (Kanban)
-
- 
-
-## Flujo de trabajo (Git)
-
- 
-
-- Desarrollo en ramas `feature/*`
-
-- Revisión mediante Pull Requests
-
-- Aprobación por parte del compañero
-
-- Merge a `main` protegido
-
- 
-
-## Estado actual de la práctica
-
- 
-
-- [x] Organización creada
-
-- [x] Repo privado
-
-- [x] Integrantes añadidos
-
-- [x] Ramas de trabajo
-
-- [x] Pull Requests revisados
-
-- [x] Dataset añadido
-
-- [x] Scripts training/prediction implementados
-
-- [x] Tests básicos implementados
-
-- [x] Project (Kanban) creado
+    A --> E[test_training.py]
