@@ -54,4 +54,5 @@ flowchart TD
     D[nuevos_datos.csv] --> E[prediction.py]
     C --> E
     E --> F[predicciones.csv]
+
 <!-- force rebuild -->
