@@ -1,47 +1,36 @@
 name: Build and Publish Jupyter Book
 
 on:
-  pull_request:
-    branches: [ main ]
   push:
-    branches: [ main ]
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: write
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v4
         with:
-          python-version: "3.11"
+          python-version: "3.10"
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           pip install jupyter-book
-
-      - name: Copy notebooks into Jupyter Book folder
-        run: |
-          # Borra notebooks antiguos dentro del libro
-          find docs/libro -name "*.ipynb" -delete
-          # Copia todos los notebooks del proyecto a docs/libro/
-          cp -r notebooks/*.ipynb docs/libro/
 
       - name: Build Jupyter Book
         run: |
-          jupyter-book build docs/libro
-
-      - name: Skip deploy on PRs
-        if: github.event_name == 'pull_request'
-        run: echo "Build OK on PR. Deploy only on push to main."
+          jupyter-book build docs/libro/
 
       - name: Deploy to GitHub Pages
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
