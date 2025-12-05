@@ -2,22 +2,22 @@
 title: Practica 2 — Documentación del Proyecto
 author: Tu equipo
 
+# Donde está el libro
 root: index
 
 execute:
   execute_notebooks: off
 
+# Archivos de bibliografía
 bibtex_bibfiles:
   - references.bib
 
 html:
   use_issues_button: true
   use_repository_button: true
-  baseurl: "/practica1"   
 
 repository:
   url: https://github.com/PracticaJuanyLuis/practica1
   path_to_book: docs/libro
   branch: main
 
-# Trigger rebuild
