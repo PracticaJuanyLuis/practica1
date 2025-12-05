@@ -1,4 +1,7 @@
 jupyter-book
 matplotlib
 numpy
+pandas
+scikit-learn
+python-dotenv
 streamlit>=1.39.0
