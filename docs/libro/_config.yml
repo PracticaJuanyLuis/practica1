@@ -20,3 +20,4 @@ repository:
   path_to_book: docs/libro
   branch: main
 
+# Trigger rebuild
